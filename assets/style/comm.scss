@@ -41,4 +41,9 @@ body{
   .cm-cursor{
     cursor: pointer;
   }
+  .card{
+    &+.card{
+      margin-top:1rem;
+    }
+  }
 }
