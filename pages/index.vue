@@ -203,9 +203,15 @@
             </b-list-group>
             <b-card-footer>友情链接</b-card-footer>
             <b-list-group flush>
-              <b-list-group-item>Cras justo odio</b-list-group-item>
-              <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-              <b-list-group-item>Vestibulum at eros</b-list-group-item>
+              <b-list-group-item class="cm-cursor"
+                >Cras justo odio</b-list-group-item
+              >
+              <b-list-group-item class="cm-cursor"
+                >Dapibus ac facilisis in</b-list-group-item
+              >
+              <b-list-group-item class="cm-cursor"
+                >Vestibulum at eros</b-list-group-item
+              >
             </b-list-group>
           </b-card>
         </b-col>
@@ -217,6 +223,7 @@
 import breadCrumb from "../components/breadCrumb";
 import scrollLoad from "../mixins/scrollLoad";
 import cmSpinner from "../components/cmSpinner";
+import { mapMutations } from "vuex";
 export default {
   mixins: [scrollLoad],
   components: { breadCrumb, cmSpinner },
@@ -224,6 +231,35 @@ export default {
     return {
       list: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
     };
+  },
+  computed: {
+    validSearch() {
+      return (
+        (this.$route.query.search &&
+          String(this.$route.query.search).trim().length > 0) ||
+        (this.search && String(this.search).trim().length > 0)
+      );
+    },
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: "My custom description",
+        },
+      ],
+    };
+  },
+  created() {
+    this.$store.commit("system/setBreadList", [
+      {
+        text: "首页",
+        href: "#",
+      },
+    ]);
   },
   methods: {
     scrollFn() {

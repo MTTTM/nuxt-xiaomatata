@@ -1,26 +1,12 @@
 <template>
-  <b-breadcrumb :items="items"></b-breadcrumb>
+  <b-breadcrumb :items="list"></b-breadcrumb>
 </template>
-
 <script>
 export default {
-  data() {
-    return {
-      items: [
-        {
-          text: "Admin",
-          href: "#",
-        },
-        {
-          text: "Manage",
-          href: "#",
-        },
-        {
-          text: "Library",
-          active: true,
-        },
-      ],
-    };
+  computed: {
+    list() {
+      return this.$store.state.system.breadList;
+    },
   },
 };
 </script>
