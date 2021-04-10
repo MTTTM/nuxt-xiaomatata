@@ -1,0 +1,17 @@
+body{
+  .container{
+    min-height: auto;
+    justify-content: start;
+    text-align: left;
+  }
+  .card-list-item{
+    height: 200px;
+    &+  .card-list-item{
+      margin-top:1rem;
+    }
+    .cart-list-item-img{
+      width: 120px;
+      height: 120px;
+    }
+  }
+}

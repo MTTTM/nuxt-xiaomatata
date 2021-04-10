@@ -1,0 +1,32 @@
+body{
+  .container{
+    min-height: auto;
+    justify-content: start;
+    text-align: left;
+  }
+  .card-list-item{
+    height: 180px;
+    cursor: pointer;
+    &:hover{
+      background-color: rgba(0, 0, 0, 0.03);
+      img{
+        opacity: .8;
+      }
+    }
+    &+  .card-list-item{
+      margin-top:1rem;
+    }
+    .cart-list-item-img{
+      width: 200px;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+  }
+  .cm-spinner{
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+  }
+}
