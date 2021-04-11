@@ -79,7 +79,7 @@
           </b-card>
         </b-col>
         <b-col lg="3" md="12" sm="12" class="cm-sm-hide">
-          <recommendList />
+          <recommendList :list="hotArcList" :showEye="false" title="推荐文章" />
           <bloggerRanking />
           <latestComment />
           <aboutMe />
@@ -115,6 +115,33 @@ export default {
   data() {
     return {
       list: [{}, {}, {}, {}],
+      hotArcList: [
+        {
+          title: "你好无趣你hi昂奋神鼎飞丹砂发斯蒂芬",
+          count: 100,
+          id: 1,
+        },
+        {
+          title: "你好无趣你hi昂奋神鼎飞丹砂发斯蒂芬",
+          count: 100,
+          id: 2,
+        },
+        {
+          title: "你好无趣你hi昂奋神鼎飞丹砂发斯蒂芬",
+          count: 100,
+          id: 3,
+        },
+        {
+          title: "你好无趣你hi昂奋神鼎飞丹砂发斯蒂芬",
+          count: 100,
+          id: 4,
+        },
+        {
+          title: "你好无趣你hi昂奋神鼎飞丹砂发斯蒂芬",
+          count: 100,
+          id: 5,
+        },
+      ],
     };
   },
   computed: {

@@ -5,13 +5,17 @@
     </template>
 
     <b-card-body>
-      <b-card-text v-for="(item, index) in list" :key="index">
-        <a href="#" class="card-link"
-          >你好阿斯蒂芬，污泥起舞污泥起舞污泥起舞
-          <span class="cm-sub-txt" v-if="showEye"
-            ><b-icon icon="eye"></b-icon> 100</span
+      <b-card-text v-for="item in list" :key="item.id">
+        <NuxtLink :to="'/article?id=' + item.id">
+          <span
+            class="text-nowrap text-truncate"
+            :class="[showEye ? 'txt' : 'txt-100']"
+            >{{ item.title }}</span
           >
-        </a>
+          <span class="cm-sub-txt" v-if="showEye"
+            ><b-icon icon="eye"></b-icon> {{ item.count }}</span
+          >
+        </NuxtLink>
       </b-card-text>
     </b-card-body>
   </b-card>
@@ -22,14 +26,31 @@ export default {
     title: {
       default: "热门文章",
     },
+    list: {
+      default: [],
+      type: Array,
+    },
     showEye: {
-      default: false,
+      default: true,
+      type: Boolean,
     },
   },
-  data() {
-    return {
-      list: [1, 2, 3, 4, 5],
-    };
+  methods: {
+    artcleClick(id) {
+      this.$router.push({
+        path: `/article?id=${id}`,
+      });
+    },
   },
 };
 </script>
+<style lang="scss" scoped>
+.txt {
+  max-width: 80%;
+  display: inline-block;
+}
+.txt-100 {
+  max-width: 95%;
+  display: inline-block;
+}
+</style>

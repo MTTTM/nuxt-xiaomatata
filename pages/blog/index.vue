@@ -4,14 +4,14 @@
     <b-container style="margin-top: 1rem" fluid>
       <b-row class="w-100" no-gutters>
         <b-col lg="3" md="12" sm="12" class="cm-sm-hide">
-          <recommendList title="热门文章" />
-          <recommendList title="最新文章" />
-          <recommendList title="分类栏目" />
+          <recommendList title="热门文章" :list="hotArcList" :showEye="true" />
+          <recommendList title="最新文章" :list="newArcList" />
+          <classifyList title="分类栏目" :list="classifyList" :showEye="true" />
         </b-col>
         <b-col lg="6" md="12" sm="12" class="px-3" style="margin-bottom: 1rem">
           <b-card no-body class="overflow-hidden card-list-item">
             <template #header>
-              <h4 class="mb-0">文章列表</h4>
+              <h4 class="mb-0">{{ pancelTitle }}</h4>
             </template>
             <b-overlay :show="loading" rounded="sm" fixed>
               <b-list-group flush>
@@ -35,7 +35,7 @@
           </b-card>
         </b-col>
         <b-col lg="3" md="12" sm="12">
-          <recommendList title="时间分栏" />
+          <timePostList title="时间分栏" :list="timeList" />
           <latestComment />
           <aboutMe />
         </b-col>
@@ -53,6 +53,8 @@ import aboutMe from "../../components/aboutMe";
 import carouselBox from "../../components/carouselBox";
 import commentBox from "../../components/commentBox";
 import commentList from "../../components/commentList";
+import classifyList from "../../components/classifyList";
+import timePostList from "../../components/timePostList";
 import { mapMutations } from "vuex";
 export default {
   components: {
@@ -65,6 +67,8 @@ export default {
     carouselBox,
     commentBox,
     commentList,
+    classifyList,
+    timePostList,
   },
   data() {
     return {
@@ -73,6 +77,109 @@ export default {
       perPage: 1,
       currentPage: 5,
       loading: false,
+      hotArcList: [
+        {
+          title: "你好无趣你hi昂奋神鼎飞丹砂发斯蒂芬",
+          count: 100,
+          id: 1,
+        },
+        {
+          title: "你好无趣你hi昂奋神鼎飞丹砂发斯蒂芬",
+          count: 100,
+          id: 2,
+        },
+        {
+          title: "你好无趣你hi昂奋神鼎飞丹砂发斯蒂芬",
+          count: 100,
+          id: 3,
+        },
+        {
+          title: "你好无趣你hi昂奋神鼎飞丹砂发斯蒂芬",
+          count: 100,
+          id: 4,
+        },
+        {
+          title: "你好无趣你hi昂奋神鼎飞丹砂发斯蒂芬",
+          count: 100,
+          id: 5,
+        },
+      ],
+      newArcList: [
+        {
+          title: "你好无趣你hi昂奋神鼎飞丹砂发斯蒂芬",
+          id: 1,
+        },
+        {
+          title: "你好无趣你hi昂奋神鼎飞丹砂发斯蒂芬",
+          id: 2,
+        },
+        {
+          title: "你好无趣你hi昂奋神鼎飞丹砂发斯蒂芬",
+          id: 3,
+        },
+        {
+          title: "你好无趣你hi昂奋神鼎飞丹砂发斯蒂芬",
+          id: 4,
+        },
+        {
+          title: "你好无趣你hi昂奋神鼎飞丹砂发斯蒂芬",
+          id: 5,
+        },
+      ],
+      classifyList: [
+        {
+          title: "html",
+          count: "100",
+          id: 1,
+        },
+        {
+          title: "CSS",
+          count: "100",
+          id: 2,
+        },
+        {
+          title: "JAVASCRIPT",
+          count: "100",
+          id: 3,
+        },
+        {
+          title: "PyTHON",
+          count: "100",
+          id: 4,
+        },
+        {
+          title: "日常生活",
+          count: "100",
+          id: 5,
+        },
+      ],
+      timeList: [
+        {
+          title: "2020/01",
+          count: "100",
+          id: 1,
+        },
+        {
+          title: "2020/02",
+          count: "100",
+          id: 2,
+        },
+        {
+          title: "2020/03",
+          count: "100",
+          id: 3,
+        },
+        {
+          title: "2020/03",
+          count: "100",
+          id: 4,
+        },
+        {
+          title: "2020/05",
+          count: "100",
+          id: 5,
+        },
+      ],
     };
   },
   computed: {
@@ -83,10 +190,18 @@ export default {
         (this.search && String(this.search).trim().length > 0)
       );
     },
+    pancelTitle() {
+      if (this.$route.query && this.$route.query.classify) {
+        return `分类:${this.$route.query.classify}`;
+      } else if (this.$route.query && this.$route.query.date) {
+        return `时间:${this.$route.query.date}`;
+      }
+      return "文章列表";
+    },
   },
   head() {
     return {
-      title: this.title,
+      title: "博客",
       meta: [
         {
           hid: "description",
@@ -95,6 +210,9 @@ export default {
         },
       ],
     };
+  },
+  created() {
+    console.log("this", this.$route.query.classify);
   },
   methods: {
     artcleClick(id) {
