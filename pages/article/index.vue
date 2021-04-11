@@ -79,7 +79,11 @@
           </b-card>
         </b-col>
         <b-col lg="3" md="12" sm="12" class="cm-sm-hide">
-          <recommendList :list="hotArcList" :showEye="false" title="推荐文章" />
+          <recommendList
+            :list="hotArcList"
+            :showEye="false"
+            title="其他推荐文章"
+          />
           <bloggerRanking />
           <latestComment />
           <aboutMe />

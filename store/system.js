@@ -1,6 +1,7 @@
 export const state = () => ({
   search: "",
-  breadList:[]
+  breadList:[],
+  settingCollapse:false,//博客设置页是否收起边栏目
 })
 
 export const mutations = {
@@ -21,5 +22,8 @@ export const mutations = {
       state.breadList=t;
     }
     
+  },
+  setSettingCollapse(state,data){
+    state.settingCollapse=data;
   }
 };

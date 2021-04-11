@@ -1,7 +1,9 @@
 <template>
   <div class="nav-bar">
     <b-navbar toggleable="lg" type="dark" variant="info" fixed="top">
-      <b-navbar-brand href="/"> 塔塔 </b-navbar-brand>
+      <b-navbar-brand>
+        <NuxtLink to="/">塔塔</NuxtLink>
+      </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse" />
 
@@ -48,8 +50,8 @@
               <em>User</em>
             </template>
 
-            <b-dropdown-item href="#"> Profile </b-dropdown-item>
-            <b-dropdown-item href="#"> Sign Out </b-dropdown-item>
+            <b-dropdown-item href="/setting">博客管理</b-dropdown-item>
+            <b-dropdown-item href="#">登出</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
