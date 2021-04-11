@@ -5,10 +5,12 @@
     </template>
     <b-media>
       <template #aside>
-        <b-avatar
-          variant="info"
-          src="https://placekitten.com/300/300"
-        ></b-avatar>
+        <NuxtLink to="/blog?username=zhazhahui">
+          <b-avatar
+            variant="info"
+            src="https://placekitten.com/300/300"
+          ></b-avatar>
+        </NuxtLink>
       </template>
 
       <h5 class="mt-0">
@@ -24,10 +26,12 @@
     </b-media>
     <b-media>
       <template #aside>
-        <b-avatar
-          variant="info"
-          src="https://placekitten.com/300/300"
-        ></b-avatar>
+        <NuxtLink to="/blog?username=zhazhahui">
+          <b-avatar
+            variant="info"
+            src="https://placekitten.com/300/300"
+          ></b-avatar>
+        </NuxtLink>
       </template>
 
       <h5 class="mt-0">
@@ -43,10 +47,12 @@
     </b-media>
     <b-media>
       <template #aside>
-        <b-avatar
-          variant="info"
-          src="https://placekitten.com/300/300"
-        ></b-avatar>
+        <NuxtLink to="/blog?username=zhazhahui">
+          <b-avatar
+            variant="info"
+            src="https://placekitten.com/300/300"
+          ></b-avatar>
+        </NuxtLink>
       </template>
 
       <h5 class="mt-0">
@@ -62,10 +68,12 @@
     </b-media>
     <b-media>
       <template #aside>
-        <b-avatar
-          variant="info"
-          src="https://placekitten.com/300/300"
-        ></b-avatar>
+        <NuxtLink to="/blog?username=zhazhahui">
+          <b-avatar
+            variant="info"
+            src="https://placekitten.com/300/300"
+          ></b-avatar>
+        </NuxtLink>
       </template>
 
       <h5 class="mt-0">

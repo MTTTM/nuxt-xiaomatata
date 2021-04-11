@@ -13,7 +13,13 @@
           This is a wider card with supporting text as a natural lead-in to
           additional content. This content is a little bit longer.
         </b-card-text>
-        <b-card-text>作者:小熊 时间:2020/10/10 12:12:23</b-card-text>
+        <b-card-text
+          >作者:小熊 时间:2020/10/10 12:12:23
+          <template v-if="showBtn">
+            <b-button variant="danger" size="sm">删除</b-button>
+            <b-button variant="outline-primary" size="sm">编辑</b-button>
+          </template>
+        </b-card-text>
       </b-card-body>
     </b-col>
   </b-row>
@@ -22,6 +28,9 @@
 export default {
   props: {
     singe: {
+      default: false,
+    },
+    showBtn: {
       default: false,
     },
   },
