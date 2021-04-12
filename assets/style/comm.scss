@@ -55,4 +55,19 @@ body{
   .error{
     color:var(--red)!important;
   }
+  /**
+  单行，无图 文章列表
+  **/
+  .cm-single-doc-list{
+    .card-body {
+      padding: 0;
+    }
+    .card-title {
+      margin-bottom: 0.2rem;
+    }
+    .card-text {
+      margin-bottom: 0.2rem;
+      line-height: 1.2;
+    }
+  }
 }

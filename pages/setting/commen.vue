@@ -1,16 +1,8 @@
 <template>
   <b-card no-body class="overflow-hidden">
     <template #header>
-      <h4 class="mb-0">文章管理</h4>
+      <h4 class="mb-0">评论管理</h4>
       <b-form inline style="margin-top: 1rem">
-        <label class="sr-only" for="inline-form-input-name">分类</label>
-        <b-form-select
-          v-model="params.classify"
-          :options="options"
-          size="sm"
-          class="mr-1"
-        ></b-form-select>
-
         <label class="sr-only" for="inline-form-input-username">日期</label>
         <b-form-datepicker
           id="example-datepicker"
@@ -19,15 +11,11 @@
           size="sm"
           placeholder="选择日期"
         ></b-form-datepicker>
-        <label class="sr-only" for="inline-form-input-username">标题</label>
-        <b-form-input
-          size="sm"
-          class="mr-1"
-          v-model="params.title"
-          placeholder="请输入标题"
-        ></b-form-input>
 
-        <b-form-checkbox class="mr-1">不可见</b-form-checkbox>
+        <b-form-radio-group v-model="params.checked" name="radio-sub-component">
+          <b-form-radio value="0">未审核</b-form-radio>
+          <b-form-radio value="1">已审核</b-form-radio>
+        </b-form-radio-group>
 
         <b-button variant="primary" size="sm">搜索</b-button>
       </b-form>
@@ -35,19 +23,21 @@
     <b-overlay :show="loading" rounded="sm" fixed>
       <b-list-group flush>
         <b-list-group-item v-for="(item, index) in list" :key="index">
-          <b-row no-gutters :class="['cm-single-doc-list']">
+          <b-row no-gutters :class="['single']">
             <b-col :md="11">
               <b-card-body>
                 <b-card-title>
-                  <NuxtLink :to="'/blog?username=zhazhahui'"
-                    >Horizontal Card</NuxtLink
+                  <NuxtLink :to="'/article?id=' + index"
+                    >评论：你好呀，你好啊</NuxtLink
                   >
                 </b-card-title>
                 <b-card-text>
                   This is a wider card with supporting text as a natural lead-in
                   to additional content. This content is a little bit longer.
                 </b-card-text>
-                <b-card-text>
+                <b-card-text
+                  >评论人:
+
                   <NuxtLink :to="'/blog?username=zhazhahui'">
                     <b-avatar
                       size="sm"
@@ -58,18 +48,17 @@
                   >
 
                   时间:2020/10/10 12:12:23
-                  <b-icon icon="eye"></b-icon> 100
-                  <b-icon icon="chat-dots"></b-icon> 100
-
-                  <b-button variant="danger" size="sm" @click="remove(item)"
-                    >删除</b-button
-                  >
-                  <b-button
-                    variant="outline-primary"
-                    size="sm"
-                    @click="toEdi(item)"
-                    >编辑</b-button
-                  >
+                  <template>
+                    <b-button variant="danger" size="sm" @click="remove(item)"
+                      >删除</b-button
+                    >
+                    <b-button
+                      variant="outline-primary"
+                      size="sm"
+                      @click="checked(item)"
+                      >审核通过</b-button
+                    >
+                  </template>
                 </b-card-text>
               </b-card-body>
             </b-col>
@@ -96,48 +85,33 @@
 <script>
 import cmSpinner from "../../components/cmSpinner";
 import settingSide from "../../components/settingSide";
+import confirm from "../../components/confirm";
 import { mapMutations } from "vuex";
 export default {
   components: {
     cmSpinner,
     settingSide,
+    confirm,
   },
   data() {
     return {
-      list: [
-        { id: 1 },
-        { id: 2 },
-        { id: 3 },
-        { id: 4 },
-        { id: 5 },
-        { id: 6 },
-        { id: 7 },
-        { id: 8 },
-        { id: 9 },
-        { id: 10 },
-      ],
+      list: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
       rows: 100,
       perPage: 1,
       currentPage: 5,
       loading: false,
+      confirmTitle: "",
+      okCallback: "",
       params: {
         date: "",
-        classify: null,
         title: "",
+        checked: 0, //0 未审核，1已审核
       },
-      options: [
-        { value: null, text: "请选择分类", disabled: true },
-        { value: "a", text: "This is First" },
-        { value: "b", text: "Selected Option" },
-        { value: "c", text: "This is an option" },
-      ],
-      confirmTitle: "你确定要删除这篇文章么?",
-      okCallback: "",
     };
   },
   head() {
     return {
-      title: "博客",
+      title: "评论列表",
       meta: [
         {
           hid: "description",
@@ -148,17 +122,6 @@ export default {
     };
   },
   methods: {
-    toEdi(item) {
-      if (item.id % 2 == 0) {
-        this.$router.push({
-          path: `/setting/post?id=${item.id}`,
-        });
-      } else {
-        this.$router.push({
-          path: `/setting/postcmd?id=${item.id}`,
-        });
-      }
-    },
     remove(item) {
       this.confirmTitle = "确定要删除这个评论么?";
       this.okCallback = "remove_push";
@@ -180,7 +143,6 @@ export default {
       }, 1000);
     },
     pageChange(page) {
-      console.log("page", page);
       this.loading = true;
       setTimeout(() => {
         this.loading = false;
@@ -189,4 +151,17 @@ export default {
   },
 };
 </script>
-
+<style lang="scss" scoped>
+.single {
+  .card-body {
+    padding: 0;
+  }
+  .card-title {
+    margin-bottom: 0.2rem;
+  }
+  .card-text {
+    margin-bottom: 0.2rem;
+    line-height: 1.2;
+  }
+}
+</style>

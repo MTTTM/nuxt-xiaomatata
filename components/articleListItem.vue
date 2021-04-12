@@ -1,5 +1,5 @@
 <template>
-  <b-row no-gutters :class="[singe ? 'single' : '']">
+  <b-row no-gutters :class="[singe ? 'cm-single-doc-list' : '']">
     <b-col md="3" v-if="!singe">
       <b-card-img
         src="https://picsum.photos/400/400/?image=20"
@@ -8,13 +8,27 @@
       ></b-card-img>
     </b-col>
     <b-col :md="txtNum">
-      <b-card-body title="Horizontal Card">
+      <b-card-body>
+        <b-card-title>
+          <NuxtLink :to="'/blog?username=zhazhahui'">Horizontal Card</NuxtLink>
+        </b-card-title>
         <b-card-text>
           This is a wider card with supporting text as a natural lead-in to
           additional content. This content is a little bit longer.
         </b-card-text>
-        <b-card-text
-          >作者:小熊 时间:2020/10/10 12:12:23
+        <b-card-text>
+          <NuxtLink :to="'/blog?username=zhazhahui'">
+            <b-avatar
+              size="sm"
+              variant="info"
+              src="https://placekitten.com/300/300"
+            ></b-avatar>
+            渣渣辉</NuxtLink
+          >
+
+          时间:2020/10/10 12:12:23
+          <b-icon icon="eye"></b-icon> 100
+          <b-icon icon="chat-dots"></b-icon> 100
           <template v-if="showBtn">
             <b-button variant="danger" size="sm">删除</b-button>
             <b-button variant="outline-primary" size="sm">编辑</b-button>
@@ -41,17 +55,3 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
-.single {
-  .card-body {
-    padding: 0;
-  }
-  .card-title {
-    margin-bottom: 0.2rem;
-  }
-  .card-text {
-    margin-bottom: 0.2rem;
-    line-height: 1.2;
-  }
-}
-</style>

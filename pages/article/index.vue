@@ -8,7 +8,10 @@
             <b-card-body>
               <b-card-title>Spring Boot 2.x基础教程：使用MongoDB</b-card-title>
               <b-card-sub-title class="mb-2"
-                >作者:小熊 时间:2020/12/10 12-10-10</b-card-sub-title
+                >作者:
+                <NuxtLink :to="'/blog?username=zhazhahui'"> 渣渣辉</NuxtLink>
+                时间:2020/12/10 12-10-10 <b-icon icon="eye"></b-icon> 100
+                <b-icon icon="chat-dots"></b-icon> 100</b-card-sub-title
               >
               <b-card-text>
                 <p>
