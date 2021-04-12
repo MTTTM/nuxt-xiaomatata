@@ -148,7 +148,7 @@ export default {
   mixins: [post],
   head() {
     return {
-      title: "发布文章",
+      title: "发布文章-H5",
       script: [
         { src: "/libs/jquery-1.8.3.min.js", type: "text/javascript" },
         {

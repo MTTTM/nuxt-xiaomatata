@@ -84,7 +84,7 @@ export default {
   },
   head() {
     return {
-      title: "评论列表",
+      title: "我关注",
       meta: [
         {
           hid: "description",

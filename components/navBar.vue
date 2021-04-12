@@ -2,7 +2,7 @@
   <div class="nav-bar">
     <b-navbar toggleable="lg" type="dark" variant="info" fixed="top">
       <b-navbar-brand>
-        <NuxtLink to="/">塔塔</NuxtLink>
+        <NuxtLink to="/" class="logo-txt">塔塔</NuxtLink>
       </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse" />
@@ -49,9 +49,11 @@
               ></b-avatar>
               <em>User</em>
             </template>
-
-            <b-dropdown-item href="/setting">博客管理</b-dropdown-item>
-            <b-dropdown-item href="#">登出</b-dropdown-item>
+            <template v-for="item in dropdownItem">
+              <b-dropdown-item :key="item.path" v-if="showItem(item.path)">
+                <NuxtLink :to="item.path">{{ item.title }}</NuxtLink>
+              </b-dropdown-item>
+            </template>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -64,6 +66,28 @@ export default {
   data() {
     return {
       search: "",
+      dropdownItem: [
+        {
+          path: "/setting",
+          title: "博客管理",
+        },
+        {
+          path: "/blog?username=zhazhahui",
+          title: "个人中心",
+        },
+        {
+          path: "/setting/post",
+          title: "发文H5",
+        },
+        {
+          path: "/setting/postcmd",
+          title: "发文cmd",
+        },
+        {
+          path: "/signout",
+          title: "登出",
+        },
+      ],
     };
   },
   computed: {
@@ -105,6 +129,9 @@ export default {
     }
   },
   methods: {
+    showItem(path = "") {
+      return this.$route.path != path;
+    },
     submit(event) {
       event.preventDefault();
       if (!this.validSearch) {
@@ -122,5 +149,12 @@ export default {
 * {
   margin: 0;
   padding: 0;
+}
+.logo-txt {
+  color: rgba(255, 255, 255, 0.7);
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
 }
 </style>

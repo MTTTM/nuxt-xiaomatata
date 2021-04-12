@@ -1,5 +1,5 @@
 <template>
-  <b-card no-body class="overflow-hidden card-list-item">
+  <b-card no-body class="overflow-hidden">
     <template #header>
       <h4 class="mb-0">评论</h4>
     </template>
