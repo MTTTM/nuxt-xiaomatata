@@ -152,19 +152,28 @@ export default {
       script: [
         { src: "/libs/jquery-1.8.3.min.js", type: "text/javascript" },
         {
-          src: "/libs/wangEditor/wangEditor.min.js",
+          src: "/libs/editormd/editormd.min.js",
           type: "text/javascript",
         },
       ],
+      link: [{ rel: "stylesheet", href: "/libs/editormd/editormd.min.css" }],
     };
   },
   mounted() {
     this.$nextTick(() => {
       setTimeout(() => {
-        const E = window.wangEditor;
-        this.edi = new E("#edi-wang");
-        this.edi.config.height = 600;
-        this.edi.create();
+        this.edi = editormd("edi-wang", {
+          width: "100%",
+          // autoHeight      : true,
+          height: 640,
+          path: "/libs/editormd/lib/",
+          htmlDecode: "style,script,iframe",
+          tex: true,
+          emoji: true,
+          taskList: true,
+          flowChart: true,
+          sequenceDiagram: true,
+        });
       }, 1000);
     });
   },

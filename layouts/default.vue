@@ -2,12 +2,14 @@
   <div>
     <navBar />
     <Nuxt />
+    <toTop />
   </div>
 </template>
 <script>
 import navBar from "../components/navBar";
+import toTop from "../components/toTop";
 export default {
-  components: { navBar }
+  components: { navBar, toTop },
 };
 </script>
 <style>

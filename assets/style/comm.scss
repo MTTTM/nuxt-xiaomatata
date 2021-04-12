@@ -52,4 +52,7 @@ body{
   .list-group-item-active{
     color:var(--teal);
   }
+  .error{
+    color:var(--red)!important;
+  }
 }

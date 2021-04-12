@@ -35,6 +35,11 @@ export default {
           id: 2,
         },
         {
+          title: "发布文章(cmd）",
+          path: "/setting/postcmd",
+          id: "2-1",
+        },
+        {
           title: "管理评论",
           path: "/setting/post",
           id: 3,
