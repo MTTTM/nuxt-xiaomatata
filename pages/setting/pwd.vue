@@ -120,8 +120,8 @@ export default {
       }, 1000);
     },
     makeToast(variant = null, msg = "") {
-      this.$bvToast.toast("Toast body content", {
-        title: msg,
+      this.$bvToast.toast(msg, {
+        title: "提示",
         variant: variant,
         solid: true,
         toaster: "b-toaster-top-center",

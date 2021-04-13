@@ -43,6 +43,11 @@ export default {
           id: 1,
           path: "/setting/pwd",
         },
+        {
+          title: "个人信息",
+          id: 1,
+          path: "/setting/info",
+        },
       ],
       cntAdmin: [
         {
