@@ -25,6 +25,9 @@ export default {
   plugins: [
     '@/plugins/vuelidate'
   ],
+  router: {
+    middleware: ['route']
+  },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

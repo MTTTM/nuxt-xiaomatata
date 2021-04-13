@@ -2,6 +2,7 @@ export const state = () => ({
   search: "",
   breadList:[],
   settingCollapse:false,//博客设置页是否收起边栏目
+  showTopNav:true,//显示顶部导航栏
 })
 
 export const mutations = {
@@ -25,5 +26,8 @@ export const mutations = {
   },
   setSettingCollapse(state,data){
     state.settingCollapse=data;
+  },
+  setShowTopNav(state,data){
+    state.showTopNav=data;
   }
 };

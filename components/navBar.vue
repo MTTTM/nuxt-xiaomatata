@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-bar">
+  <div class="nav-bar" v-show="showNav">
     <b-navbar toggleable="lg" type="dark" variant="info" fixed="top">
       <b-navbar-brand>
         <NuxtLink to="/" class="logo-txt">塔塔</NuxtLink>
@@ -84,8 +84,12 @@ export default {
           title: "发文cmd",
         },
         {
-          path: "/signout",
-          title: "登出",
+          path: "/user/signin",
+          title: "登陆",
+        },
+        {
+          path: "/user/registered",
+          title: "注册",
         },
       ],
     };
@@ -104,6 +108,9 @@ export default {
           String(this.$route.query.search).trim().length > 0) ||
         (this.search && String(this.search).trim().length > 0)
       );
+    },
+    showNav() {
+      return this.$store.state.system.showTopNav;
     },
   },
   watch: {
