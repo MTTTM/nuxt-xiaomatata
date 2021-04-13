@@ -126,7 +126,6 @@ export default {
   methods: {
     validateState(name) {
       const { $dirty, $error } = this.$v.params[name];
-      console.log("dirty", $dirty, $error, this.$v.params[name]);
       return $dirty ? !$error : null;
     },
     showModal() {

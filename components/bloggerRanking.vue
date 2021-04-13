@@ -1,7 +1,7 @@
 <template>
   <b-card no-body>
     <template #header>
-      <h4 class="mb-0">博主排名</h4>
+      <h4 class="mb-0">发文排行</h4>
     </template>
     <b-list-group flush>
       <b-list-group-item class="d-flex align-items-center">

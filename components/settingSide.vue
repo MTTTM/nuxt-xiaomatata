@@ -17,12 +17,33 @@
         </NuxtLink>
       </b-list-group-item>
     </b-list-group>
+    <b-card-footer>账号设置</b-card-footer>
+    <b-list-group flush>
+      <b-list-group-item v-for="item in accountList" :key="item.id">
+        <NuxtLink
+          :to="item.path"
+          :class="[
+            'cm-cursor',
+            isActive(item.path) ? 'list-group-item-active' : '',
+          ]"
+        >
+          {{ item.title }}
+        </NuxtLink>
+      </b-list-group-item>
+    </b-list-group>
   </b-card>
 </template>
 <script>
 export default {
   data() {
     return {
+      accountList: [
+        {
+          title: "密码修改",
+          id: 1,
+          path: "/setting/pwd",
+        },
+      ],
       cntAdmin: [
         {
           title: "文章管理",
